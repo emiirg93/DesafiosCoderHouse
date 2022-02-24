@@ -1,4 +1,4 @@
-const recorrerTexto = (texto = '') => {
+const mostrarTexto = (texto = '') => {
     console.log(texto);
 }
 
@@ -20,8 +20,8 @@ const interval = (texto = '', timer = 1000, callback) => {
 
 (async () => {
     let countLetras = 0;
-    countLetras += await interval('Hola soy', 500, recorrerTexto);
-    countLetras += await interval('Emiliano Rago intentado', undefined, recorrerTexto);
-    countLetras += await interval('resolver el desafío.', 2000, recorrerTexto);
+    countLetras += await interval('Hola soy', 500, mostrarTexto);
+    countLetras += await interval('Emiliano Rago intentado', undefined, mostrarTexto);
+    countLetras += await interval('resolver el desafío.', 2000, mostrarTexto);
     console.log(`Proceso completo - Palabras totales : ${countLetras}`);
 })();
