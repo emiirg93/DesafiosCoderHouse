@@ -44,5 +44,5 @@ const agregarProductos = (productos = []) => {
         }
     });
 }
- 
+
 ejecutarPrograma(productos);
