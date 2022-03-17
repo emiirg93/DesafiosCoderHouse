@@ -11,7 +11,7 @@ class Archivo {
         if (this.existeArchivo()) {
             const contenido =  JSON.parse(fs.readFileSync(this.nombreArchivo, 'utf-8'));
             return {
-                item: contenido,
+                items: contenido,
                 cantidad: contenido.length
             };
         }
@@ -23,7 +23,7 @@ class Archivo {
         const numberRandom = this.getRandomArbitrary(0,this.length -1);
         const contenido = this.leer();
         return {
-            item: contenido.item[numberRandom]
+            item: contenido.items[numberRandom]
         };
     }
 

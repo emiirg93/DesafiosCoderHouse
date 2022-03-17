@@ -6,16 +6,16 @@ const archivo = new Archivo('./files/productos.txt');
 let vistasGetProductos = 0;
 let vistasGetProductoRandom = 0;
 
-const getProductos = async (req = response, res = response) => {
-    const resp = await archivo.leer();
+const getProductos = (req = response, res = response) => {
+    const resp = archivo.leer();
     vistasGetProductos++;
     res.send(resp);
 }
 
-const getProductoRandom = async (req = request, res = response) => {
-    const resp = await archivo.leerRandom();
+const getProductoRandom = (req = request, res = response) => {
+    const resp = archivo.leerRandom();
     vistasGetProductoRandom++;
-    res.send({ resp });
+    res.send(resp);
 }
 
 const getVistas = async (req = request, res = response) => {
