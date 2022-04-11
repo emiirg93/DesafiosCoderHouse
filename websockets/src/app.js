@@ -8,12 +8,15 @@ const app = express();
 
 app.use(express.static(`${__dirname}/public`));
 
+app.use(express.json());
+
 const server = app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
 
 const clients = [];
 const productos = [];
+const messages = [];
 
 const io = new Server(server);
 
@@ -21,6 +24,7 @@ io.on('connection', socket => {
     socket.on('userConnection',(data) => {
         data.id = socket.id;
         clients.push(data);
+        io.emit('clientConnect', data);
     });
 
     socket.on('addProduct',(data) => {
@@ -28,6 +32,11 @@ io.on('connection', socket => {
         io.emit('addTable',data);
     });
 
-    io.emit('connectUser',productos);
+    socket.on('addMessage', (data) => {
+        messages.push(data);
+        io.emit('getMessage',data);
+    });
+
+    io.emit('connectUser',{productos,messages});
 });
 
